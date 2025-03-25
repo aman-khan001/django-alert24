@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block news %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 border-end border-3">
+      {% for news in news %}
+
+      <div class="row my-5">
+        <div class="col-md-4">
+          <img
+            src="/media/{{ news.image }}"
+            class="img-fluid"
+            style="width: 90vw; height: 30vh"
+            alt=""
+          />
+        </div>
+        <div class="col-md-7 px-3">
+          <h2>{{ news.title | truncatewords:10 }}</h2>
+          <small class="text-danger">Published: {{ news.date }}</small>
+          <small>{{ news.category }}</small>
+          <p>{{ news.description | truncatewords:30 | safe }}</p>
+          <a href="{% url 'details' news.id %}" class="btn btn-danger"
+            >Read more</a
+          >
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock news %}

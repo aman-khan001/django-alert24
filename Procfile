@@ -1,0 +1,1 @@
+echo "web: gunicorn aler24.wsgi" > Procfile
